@@ -125,6 +125,28 @@ function removeSpanTextAndSetAriaLabelToHidden(action) {
 /**
  * This function will remove the span attributes 
  */
+function removeSpanAndSetAriaHiddenToHiddenForSpanSiblings(action) {
+    if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY'){
+        setTimeout(function () {
+            var ul = document.getElementById("webchat").getElementsByTagName("ul")[1];
+            if (!ul) {
+                return;
+            }
+            var spans = Array.from(ul.getElementsByTagName('span'));
+            spans.forEach(function (span) {
+                var siblings = getSiblings(span);
+                siblings.forEach(function(sibling){
+                    sibling.setAttribute("aria-hidden", "hidden");
+                });
+                span.remove();
+            });
+        });
+    }
+}
+
+/**
+ * This function will remove the span attributes 
+ */
 function removeSpan(action) {
     if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY'){
         setTimeout(function () {
@@ -133,10 +155,26 @@ function removeSpan(action) {
                 return;
             }
             var spans = Array.from(ul.getElementsByTagName('span'));
-
             spans.forEach(function (span) {
                 span.remove();
             });
         });
     }
 }
+
+/**
+ * This function will get siblings for a given element 
+ */
+function getSiblings(elem) {
+	var siblings = [];
+	var sibling = elem.parentNode.firstChild;
+
+	while (sibling) {
+		if (sibling.nodeType === 1 && sibling !== elem) {
+			siblings.push(sibling);
+		}
+		sibling = sibling.nextSibling
+	}
+
+	return siblings;
+};

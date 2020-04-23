@@ -133,9 +133,12 @@ function initBotConversation() {
         // Use the following code to disable span with aria-labels and delete their inner text
         // removeSpanTextAndSetAriaLabelToHidden(action);
 
+        // Use the following code to remove spans and set the Aria-Hidden property to hidden for all span siblings
+        // removeSpanAndSetAriaHiddenToHiddenForSpanSiblings
+        
         // Use the following code to remove all spans
         // removeSpan(action);
-        
+
         return next(action);
     }}});
     const webchatOptions = {
