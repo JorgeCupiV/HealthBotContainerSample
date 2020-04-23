@@ -129,6 +129,13 @@ function initBotConversation() {
 
         // Use the following code to disable old buttons and inputs from being clickable
         // disableActiveInputsAndButtons(action);
+
+        // Use the following code to disable span with aria-labels and delete their inner text
+        // removeSpanTextAndSetAriaLabelToHidden(action);
+
+        // Use the following code to remove all spans
+        // removeSpan(action);
+        
         return next(action);
     }}});
     const webchatOptions = {

@@ -101,3 +101,42 @@ function disableActiveInputsAndButtons(action) {
     }
 
 }
+
+/**
+ * This function will remove the span attributes 
+ */
+function removeSpanTextAndSetAriaLabelToHidden(action) {
+    if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY'){
+        setTimeout(function () {
+            var ul = document.getElementById("webchat").getElementsByTagName("ul")[1];
+            if (!ul) {
+                return;
+            }
+            var spans = Array.from(ul.getElementsByTagName('span'));
+
+            spans.forEach(function (span) {
+                span.setAttribute("aria-label", "hidden");
+                span.innerText = "";
+            });
+        });
+    }
+}
+
+/**
+ * This function will remove the span attributes 
+ */
+function removeSpan(action) {
+    if (action.type === 'DIRECT_LINE/INCOMING_ACTIVITY'){
+        setTimeout(function () {
+            var ul = document.getElementById("webchat").getElementsByTagName("ul")[1];
+            if (!ul) {
+                return;
+            }
+            var spans = Array.from(ul.getElementsByTagName('span'));
+
+            spans.forEach(function (span) {
+                span.remove();
+            });
+        });
+    }
+}
